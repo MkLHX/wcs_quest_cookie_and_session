@@ -41,7 +41,18 @@
                         <a href="/cart.php" class="btn btn-warning navbar-btn">
                             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                             Cart
-                            <?php echo isset($_SESSION['items']) ? "<span class='badge badge-pill'>" . count($_SESSION['items']) . "</span>" : '' ?>
+                            <span class='badge badge-pill'>
+                                <?php
+                                $count = 0;
+                                if (isset($_SESSION['items'])) {
+
+                                    foreach ($_SESSION['items'] as $item) {
+                                        $count += $item['qty'];
+                                    }
+                                }
+                                echo $count;
+                                ?>
+                                </span>
                         </a>
                     </li>
                     <li>
